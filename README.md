@@ -1,4 +1,4 @@
-> ITEC 105 - SQL Commands V 1.1
+##  ITEC 105 - SQL Commands V 1.1
 > Created on 01/12/2024
 
 This repo is all about command clauses collection related to SQL 
