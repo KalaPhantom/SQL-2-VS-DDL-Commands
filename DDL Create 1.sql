@@ -1,5 +1,16 @@
 
---  DDL COMMANDS
+
+-- ?? IMPORTANT NOTES >>>>>> >>>>>>> >>>>>> >>>>>>>>--------------------------------------------
+/*
+* When inseting new data to the existing table, make sure that the "player-ID" is unique
+* Otherwise an error will be thrown by the MySQL driver
+*
+!! DO NOT, BY ANY INSTANCE, EXECUTE ALL COMMANDS AT ONCE 
+*/
+-- ??> -----------------------------------------------------------------------------------------
+
+
+-- * DDL COMMANDS
 
 -- CREATING A NEW DATABASE 
 CREATE DATABASE PLAYER;
@@ -7,7 +18,7 @@ CREATE DATABASE PLAYER;
 -- MAKE THE PLAYER-DATABASE AS THE ACTIVE SCHEMA
 USE PLAYER;
 
--- < CREATE TABLE > --------------------------------------------------------------- <<<
+-- *< CREATE TABLE > --------------------------------------------------------------- <<<
 
 -- Creating Player profile table
 CREATE TABLE PLAYER_PROFILE (
@@ -21,7 +32,6 @@ CREATE TABLE PLAYER_PROFILE (
 
 -- Creating In Game variable table
 CREATE TABLE IN_GAME_VARIABLES (
-
     player_ID int,
     player_Rank  VARCHAR(255) DEFAULT 'BRONZE',
     class VARCHAR(255),
@@ -73,6 +83,36 @@ VALUES
 
 
 
+-- * Adding Duplicated Items in the Database ----------------------------------------------
+
+-- TODO: Use Distinct clause
+-- * Note: The IDs are still unique
+
+INSERT INTO PLAYER_PROFILE (player_ID, player_name, AGE, Region, Email)
+VALUES 
+(20017, 'alpha_orion', 14 ,  'Philippines', 'hakdogs23@gmail.com'),
+(13459, 'silent_machine', 15 ,  'Pakistan', 'hakernot4000@gmail.com'),
+(45670, 'RENIEL', 18 ,  'Philippines', 'elyen45677@gmail.com');
+
+INSERT INTO IN_GAME_VARIABLES (player_ID, player_Rank, class, primary_Weapon, LVl, player_status)
+VALUES 
+(20017, 'BRONZE i' , 'Ranged' , 'sling shot' , 12, 'active'),
+(13459, 'DIAMOND II' , 'Melee', 'Random Tree Stick' ,99, 'inactive'),
+(45670, 'GOLD I' , 'MAGE', 'Magic Pendant of Youth', 55, 'active');
+
+
+-- * ----------------------------------------------------------------------------
+
+
+
+
+-- ! DROP FUNCTION STATEMENTS ----------------------------------------------------
+
+DROP TABLE player_profile;
+DROP TABLE in_game_variables;
+
+
+-- ! DROP FUNCTION ----------------------------------------------------------------
 
 
 
