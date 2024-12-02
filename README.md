@@ -4,7 +4,7 @@
 This repo is all about command clauses collection related to SQL 
 
 --- Important Notes ---
-> All codes here must be executed using a workbenck like MySQL 8.0 Workbench or VS code
+> All codes here must be executed using a workbenck like MySQL 8.0 Workbench or VS code ## --
 > When using VS Code , please use the following extensions: 
 > 
 > > Name: SQLTools
