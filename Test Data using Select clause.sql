@@ -3,7 +3,7 @@
 -- *DISPLAY DATA QUERIES USING SELECT CLAUSES
 
 /*
-* ## DESCRIPTION 
+* ## DESCRIPTION ##
 * All command clauses here is intended to display the collections within all tables in the database 
 * Remove some multiple line command notation to activate the command
 * Don't  forget to save any changes after modification ;
@@ -17,6 +17,36 @@
 SELECT * FROM player_profile;
 SELECT * FROM IN_GAME_VARIABLES;
 
+
+-- * ## Display both tables ## 
+
+
+
+
+
+-- *> -- Like Clause
+-- ? ---------------------------------------------------------------------------------
+
+Select player_ID,player_Rank,class,primary_Weapon,LVL,player_status
+from in_game_variables
+where player_Rank like('DIAMOND%'); 
+ 
+
+ -- *>  -- Order Clause
+-- ? ---------------------------------------------------------------------------------
+
+Select player_ID,player_Rank,class,primary_Weapon,LVL,player_status
+from in_game_variables
+where player_Rank like('DIAMOND%')
+Order by LVL ASC;
+
+-- *>  -- Group by Clause
+-- ? ---------------------------------------------------------------------------------
+
+Select max(LVL),class
+from in_game_variables
+group by class
+ORDER BY max(LVL) ASC;
 
 
 
@@ -36,6 +66,10 @@ FROM in_game_variables;
 CREATE INDEX index_by_class
 ON IN_GAME_VARIABLES(class);
 
+
+-- !Removes the index in a table
+ALTER TABLE in_game_variables
+DROP INDEX index_by_class;
 
 
 
@@ -65,7 +99,7 @@ GROUP BY player_Rank
 HAVING COUNT(*) >= 1;
 
 
--- ?> it counts
+-- *> it counts players by their player rank, with at least 2 players
 SELECT player_Rank, COUNT(*) AS Player_Count
 FROM IN_GAME_VARIABLES
 WHERE LVL > 30
@@ -75,9 +109,33 @@ HAVING COUNT(*) >= 2;
 
 
 
--- ?> CREATE INDEX ----------------------------------------------------------------------
+-- ? Alter Add column to a table ----------------------------------------------------------------------------
+-- * Add a column to track guild membership.
+ALTER TABLE IN_GAME_VARIABLES ADD guild_name VARCHAR(50);
 
 
+
+-- ? Alter  Rename ----------------------------------------------------------------------------
+-- * Rename the table from 'IN_GAME_VARIABLES' to 'HEROES'.
+ALTER TABLE IN_GAME_VARIABLES RENAME TO HEROES;
+
+-- Reset
+ALTER TABLE heroes RENAME TO IN_GAME_VARIABLES;
+
+
+-- ? Insert into Clause ----------------------------------------------------------------------------
+-- Insert a new record into the HEROES table.
+
+INSERT INTO PLAYER_PROFILE (player_ID, player_name, AGE, Region, Email)
+VALUES (10034, 'GHMN_Reniel', 19, 'Philippines', 'renegade40@gmail.com'  )
+
+INSERT INTO heroes (player_ID, player_Rank, class, primary_Weapon, LVL, player_status, guild_name)
+VALUES (10034, 'GOLD II', 'Warrior', 'Broad Sword', 10, 'active', 'Guild of Reniel');
+
+-- Test data
+
+SELECT * FROM player_profile;
+SELECT * FROM heroes;
 
 
 
