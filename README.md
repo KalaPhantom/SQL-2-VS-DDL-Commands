@@ -1,11 +1,11 @@
-> ITEC 105 - SQL Commands V 1.1
+##  ITEC 105 - SQL Commands V 1.1
 > Created on 01/12/2024
 
 This repo is all about command clauses collection related to SQL 
 
 --- Important Notes ---
 > All codes here must be executed using a workbenck like MySQL 8.0 Workbench or VS code
-> When using VS Code , pleae note to use the following extensions: 
+> When using VS Code , please use the following extensions: 
 > 
 > > Name: SQLTools
 > > Id: mtxr.sqltools
