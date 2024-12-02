@@ -1,6 +1,6 @@
 
 
--- *DISPLAY DATA QUERIES
+-- *DISPLAY DATA QUERIES USING SELECT CLAUSES
 
 /*
 * ## DESCRIPTION 
@@ -16,6 +16,9 @@
 -- TODO NOTE: You can only use one SELECT CLAUSE AT A TIME USING THIS COMPILER
 SELECT * FROM player_profile;
 SELECT * FROM IN_GAME_VARIABLES;
+
+
+
 
 
 -- * Using Distinct Clause to only display unique records
@@ -35,29 +38,38 @@ ON IN_GAME_VARIABLES(class);
 
 
 
+
 -- ?> count ----------------------------------------------------------------------------
--- * it counst all active player in game
+-- * it count all active player in game
+
+SELECT  player_profile.player_name, in_game_variables.player_status
+FROM player_profile
+JOIN in_game_variables ON player_profile.player_ID= in_game_variables.player_ID
+WHERE player_status = 'active';
+
 
 SELECT COUNT(*) AS Active_Players 
 FROM IN_GAME_VARIABLES
 WHERE player_status = 'active';
 
 
+
+
 -- ? Having Clause ----------------------------------------------------------------------------
--- *> calculate active player per rank showing the ranks with atleast 3 active player----
+-- *> calculate active player per rank showing the ranks with atleast 1 active player----
 
 SELECT player_Rank, COUNT(*) AS Active_Players
 FROM IN_GAME_VARIABLES
 WHERE player_status = 'active'
 GROUP BY player_Rank
-HAVING COUNT(*) >= 3;
+HAVING COUNT(*) >= 1;
 
 
--- ?> it find the weapons that the high level or player atleast 50 use
-SELECT primary_Weapon, COUNT(*) AS Player_Count
+-- ?> it counts
+SELECT player_Rank, COUNT(*) AS Player_Count
 FROM IN_GAME_VARIABLES
-WHERE LVL > 50
-GROUP BY primary_Weapon
+WHERE LVL > 30
+GROUP BY player_Rank
 HAVING COUNT(*) >= 2;
 
 
