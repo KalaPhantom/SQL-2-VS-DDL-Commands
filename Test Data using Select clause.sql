@@ -43,6 +43,7 @@ Order by LVL ASC;
 -- *>  -- Group by Clause
 -- ? ---------------------------------------------------------------------------------
 
+-- Using max operation
 Select max(LVL),class
 from in_game_variables
 group by class
@@ -119,7 +120,7 @@ ALTER TABLE IN_GAME_VARIABLES ADD guild_name VARCHAR(50);
 -- * Rename the table from 'IN_GAME_VARIABLES' to 'HEROES'.
 ALTER TABLE IN_GAME_VARIABLES RENAME TO HEROES;
 
--- Reset
+-- ! >>>- - - - - - - - - -  Reset - - - - - - - - - - <<<
 ALTER TABLE heroes RENAME TO IN_GAME_VARIABLES;
 
 
