@@ -121,7 +121,7 @@ ALTER TABLE IN_GAME_VARIABLES ADD guild_name VARCHAR(50);
 ALTER TABLE IN_GAME_VARIABLES RENAME TO HEROES;
 
 -- ! >>>- - - - - - - - - -  Reset - - - - - - - - - - <<<
-ALTER TABLE heroes RENAME TO IN_GAME_VARIABLES;
+ALTER TABLE heroes RENAME TO IN_GAME_VARIABLES; --!
 
 
 -- ? Insert into Clause ----------------------------------------------------------------------------
@@ -137,6 +137,32 @@ VALUES (10034, 'GOLD II', 'Warrior', 'Broad Sword', 10, 'active', 'Guild of Reni
 
 SELECT * FROM player_profile;
 SELECT * FROM heroes;
+
+
+
+-- ? Update Clause ----------------------------------------------------------------------------
+--* Update Player Name from "MamaJoe" to "PapaB"
+UPDATE PLAYER_PROFILE
+SET player_name='PapaB'
+WHERE player_ID='36473'
+
+
+-- ? Delete Clause ----------------------------------------------------------------------------
+-- *Delete The Player ID "45098" from the database
+DELETE from heroes
+WHERE player_ID=45098
+
+DELETE from PLAYER_PROFILE
+WHERE player_ID=45098
+
+-- * To View the database
+SELECT * from PLAYER_PROFILE
+
+SELECT * from heroes;
+
+-- ! Reset changes
+ROLLBACK;
+
 
 
 
