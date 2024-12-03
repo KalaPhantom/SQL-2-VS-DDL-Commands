@@ -41,7 +41,7 @@ CREATE TABLE IN_GAME_VARIABLES (
     FOREIGN KEY (player_ID) REFERENCES PLAYER_PROFILE(player_ID)
 );
 
--- < Inserting new records in the TABLES > ---------------------------------------------------------------------------------
+-- * Inserting new records in the TABLES > ---------------------------------------------------------------------------------
 
 -- Inserting records into SUBJECTS table
 INSERT INTO PLAYER_PROFILE (player_ID, player_name, AGE, Region, Email)
@@ -65,7 +65,7 @@ VALUES
 -- Inserting records in the In game variable table with respect to the primary key
 INSERT INTO IN_GAME_VARIABLES (player_ID, player_Rank, class, primary_Weapon, LVl, player_status)
 VALUES 
-(20012, 'BRONZE i' , 'Ranged' , 'sling shot' , 12, 'active'),
+(20012, 'BRONZE I' , 'Ranged' , 'sling shot' , 12, 'active'),
 (13452, 'DIAMOND II' , 'Melee', 'Random Tree Stick' ,99, 'inactive'),
 (45679, 'GOLD I' , 'MAGE', 'Magic Pendant of Youth', 55, 'active'),
 (22445, 'SILVER IV', 'Hunter', 'Buckshot Hand Cannon' , 34, 'active'),
@@ -96,7 +96,7 @@ VALUES
 
 INSERT INTO IN_GAME_VARIABLES (player_ID, player_Rank, class, primary_Weapon, LVl, player_status)
 VALUES 
-(20017, 'BRONZE i' , 'Ranged' , 'sling shot' , 12, 'active'),
+(20017, 'BRONZE I' , 'Ranged' , 'sling shot' , 12, 'active'),
 (13459, 'DIAMOND II' , 'Melee', 'Random Tree Stick' ,99, 'inactive'),
 (45670, 'GOLD I' , 'MAGE', 'Magic Pendant of Youth', 55, 'active');
 
@@ -108,9 +108,11 @@ VALUES
 
 -- ! DROP FUNCTION STATEMENTS ----------------------------------------------------
 
-DROP TABLE player_profile;
 DROP TABLE in_game_variables;
+DROP TABLE heroes;
+DROP TABLE player_profile;
 
+DROP DATABASE player;
 
 -- ! DROP FUNCTION ----------------------------------------------------------------
 
