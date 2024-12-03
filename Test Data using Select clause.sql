@@ -68,9 +68,31 @@ CREATE INDEX index_by_class
 ON IN_GAME_VARIABLES(class);
 
 
--- !Removes the index in a table
+-- *Remove Index 
+-- ! Removes the index in a table
 ALTER TABLE in_game_variables
 DROP INDEX index_by_class;
+
+
+-- ? ---------------------------------------------------------------------------------
+-- * Using DROP INDEX to delete an index in a table
+SELECT * FROM PLAYER_PROFILE;
+ CREATE INDEX idx_player_name ON PLAYER_PROFILE(player_name);
+ DROP INDEX idx_player_name ON PLAYER_PROFILE;
+
+-- ? ORDER BY WITH DESC  ---------------------------------------------------------------------------------
+-- * Use ORDER BY DESC TO SORT COLUMNS FROM HIGHEST TO LOWEST, YOU CAN USE ASC (ascending order) TO SORT FROM LOWEST TO HIGHEST
+SELECT * FROM PLAYER_PROFILE
+ORDER BY Age DESC;
+
+-- ? ---------------------------------------------------------------------------------
+-- * TRUNCATE is used to delete all the rows on the table
+SELECT * FROM PLAYER_PROFILE;
+
+TRUNCATE table in_game_variables;
+TRUNCATE TABLE PLAYER_PROFILE;
+
+ROLLBACK;
 
 
 
@@ -86,8 +108,6 @@ WHERE player_status = 'active';
 SELECT COUNT(*) AS Active_Players 
 FROM IN_GAME_VARIABLES
 WHERE player_status = 'active';
-
-
 
 
 -- ? Having Clause ----------------------------------------------------------------------------
@@ -108,12 +128,9 @@ GROUP BY player_Rank
 HAVING COUNT(*) >= 2;
 
 
-
-
 -- ? Alter Add column to a table ----------------------------------------------------------------------------
 -- * Add a column to track guild membership.
 ALTER TABLE IN_GAME_VARIABLES ADD guild_name VARCHAR(50);
-
 
 
 -- ? Alter  Rename ----------------------------------------------------------------------------
